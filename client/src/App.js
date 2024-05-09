@@ -17,7 +17,7 @@ import DonarList from "./pages/Admin/DonarList";
 import HospitalList from "./pages/Admin/HospitalList";
 import OrgList from "./pages/Admin/OrgList";
 import AdminHome from "./pages/Admin/AdminHome";
-import ForgotPasswordForm from "./forgot_password/otp/ForgotPasswordForm";
+import ForgotPasswordForm from "./pages/ForgotPasswordForm";
 import NeededBlood from "./pages/Dashboard/NeededBlood";
 function App() {
   return (
@@ -130,12 +130,10 @@ function App() {
           }
         />
 
+        <Route path="/forgot-password" element={<ForgotPasswordForm />} />
 
-<Route path="/forgot-password" element={<ForgotPasswordForm />} />
-
-<Route path="/request-blood" element={<NeededBlood />} />
+        <Route path="/request-blood" element={<NeededBlood />} />
       </Routes>
-
     </>
   );
 }
