@@ -1,0 +1,63 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color:white;
+    margin: 0;
+    padding: 0;
+  }
+  .dropdown{
+    text-align: center;
+    padding:10px;
+    margin:10px;
+    
+  }
+  
+  h2 {
+    text-align: center;
+    margin-top: 50px;
+    text-decoration-style:wavy;
+    color:black;
+  }
+  
+  form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 30px;
+    background-color:bisque;
+    border-radius: 10px;
+    box-shadow: 0 10 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="email"],
+  input[type="password"] {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    background-color:green;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  input[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+  .registration{
+    background-color:#A8C1FF;
+  }
+  .mainForm{
+    background-color:white;
+  }
+  
