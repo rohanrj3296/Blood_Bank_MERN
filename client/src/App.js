@@ -19,6 +19,8 @@ import OrgList from "./pages/Admin/OrgList";
 import AdminHome from "./pages/Admin/AdminHome";
 import ForgotPasswordForm from "./pages/ForgotPasswordForm";
 import NeededBlood from "./pages/Dashboard/NeededBlood";
+import GetNeededBlood from "./pages/Dashboard/GetNeededBlood";
+
 function App() {
   return (
     <>
@@ -133,6 +135,7 @@ function App() {
         <Route path="/forgot-password" element={<ForgotPasswordForm />} />
 
         <Route path="/request-blood" element={<NeededBlood />} />
+        <Route path="/get-requested-blood" element={<GetNeededBlood />} />
       </Routes>
     </>
   );

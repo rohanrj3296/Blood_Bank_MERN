@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Layout from "../../components/shared/Layout/Layout";
 import API from "../../services/API";
+import { useNavigate } from "react-router-dom";
 import "./NeededBlood.css"; // Import CSS file for custom styling
 
 const NeededBlood = () => {
@@ -8,17 +9,18 @@ const NeededBlood = () => {
   const [quantity, setQuantity] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      // Make API call to store the needed blood data
-      const response = await API.post("/path/to/store/needed-blood", {
-        bloodType,
-        quantity,
-      });
-      if (response.data.success) {
-        // Data stored successfully, perform any additional actions if needed
-        // Redirect or display success message, etc.
+      const response = await API.get(
+        "/inventory/get-related-organisations/" + bloodType + "/" + quantity
+      );
+      sessionStorage.setItem("bloodGroup", bloodType);
+      if (response.status == 200) {
+        sessionStorage.setItem("responseObject", JSON.stringify(response.data));
+        navigate("/get-requested-blood");
       } else {
         setErrorMessage(response.data.message);
       }
