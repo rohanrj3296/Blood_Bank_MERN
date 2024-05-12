@@ -37,6 +37,8 @@ const GetNeededBlood = () => {
               <tr>
                 <th scope="col">Organisation Name</th>
                 <th scope="col">Quantity</th>
+                <th scope="col">E-Mail</th>
+                <th scope="col">Phone</th>
                 <th scope="col">Last Updated</th>
               </tr>
             </thead>
@@ -45,6 +47,8 @@ const GetNeededBlood = () => {
                 <tr key={organisation._id}>
                   <td>{organisation.organisationName}</td>
                   <td>{organisation.bloodAvailability[bloodGroup]}</td>
+                  <td>{organisation.email}</td>
+                  <td>{organisation.phone}</td>
                   <td>
                     {moment(organisation.updatedAt).format(
                       "DD/MM/YYYY hh:mm A"
