@@ -5,8 +5,8 @@ const { AUTH_EMAIL, AUTH_PASS } = process.env;
 let transporter = nodemailer.createTransport({
   host: "smtp-mail.outlook.com",
   auth: {
-    user: "youremailid@hotmail.com",
-    pass: "yourpassword",
+    user: "testhost1080@hotmail.com",
+    pass: "testerpro1011",
   },
 });
 

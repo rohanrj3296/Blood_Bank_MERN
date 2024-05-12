@@ -260,6 +260,22 @@ const getOrgnaisationForHospitalController = async (req, res) => {
   }
 };
 
+const getRelatedOrganisationsController = async (req, res) => {
+  try {
+    const { bloodType, quantity } = req.params;
+    const hospitals = await userModel
+      .find({
+        role: "organisation",
+        [`bloodAvailability.${bloodType}`]: { $gte: parseInt(quantity) },
+      })
+      .exec();
+    console.log(req.params);
+    res.status(200).json(hospitals);
+  } catch (error) {
+    res.status(500).json({ error: error.message });
+  }
+};
+
 module.exports = {
   createInventoryController,
   getInventoryController,
@@ -269,4 +285,5 @@ module.exports = {
   getOrgnaisationForHospitalController,
   getInventoryHospitalController,
   getRecentInventoryController,
+  getRelatedOrganisationsController,
 };

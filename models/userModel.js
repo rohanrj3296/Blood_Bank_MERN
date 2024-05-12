@@ -52,7 +52,16 @@ const userSchema = new mongoose.Schema(
     },
     phone: {
       type: String,
-      required: [true, "phone numbe is required"],
+      required: [true, "phone number is required"],
+    },
+    bloodAvailability: {
+      type: Object,
+      required: function () {
+        if (this.role === "organisation") {
+          return true;
+        }
+        return false;
+      },
     },
   },
   { timestamps: true }

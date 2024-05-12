@@ -17,7 +17,7 @@ const emailGenerationController = async (req, res) => {
   const sendOTP = async ({ email, subject, message, duration = 1 }) => {
     await OTP.deleteOne({ email });
     const mailOptions = {
-      from: "youremailid@hotmail.com",
+      from: "testhost1080@hotmail.com",
       to: email,
       subject: subject,
       html: `<p>${message}</p><p style="color:tomato;font-size:25px;letter-spacing:2px;"

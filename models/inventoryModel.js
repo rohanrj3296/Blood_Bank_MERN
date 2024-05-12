@@ -18,7 +18,6 @@ const inventorySchema = new mongoose.Schema(
     },
     email: {
       type: String,
-      required: [true, "Donar Email is Required"],
     },
     organisation: {
       type: mongoose.Schema.Types.ObjectId,
@@ -35,9 +34,9 @@ const inventorySchema = new mongoose.Schema(
     donar: {
       type: mongoose.Schema.Types.ObjectId,
       ref: "users",
-      required: function () {
-        return this.inventoryType === "in";
-      },
+      // required: function () {
+      //   return this.inventoryType === "in";
+      // },
     },
   },
   { timestamps: true }
