@@ -17,7 +17,7 @@ const createInventoryController = async (req, res) => {
     // if (inventoryType === "out" && user.role !== "hospital") {
     //   throw new Error("Not a hospital");
     // }
-
+    const organisationUser = await userModel.findById(req.body.organisation);
     if (req.body.inventoryType == "out") {
       const requestedBloodGroup = req.body.bloodGroup;
       const requestedQuantityOfBlood = req.body.quantity;
@@ -61,6 +61,7 @@ const createInventoryController = async (req, res) => {
 
       //in & Out Calc
       const availableQuanityOfBloodGroup = totalIn - totalOut;
+      console.log(availableQuanityOfBloodGroup, totalIn, totalOut);
       //quantity validation
       if (availableQuanityOfBloodGroup < requestedQuantityOfBlood) {
         return res.status(500).send({
@@ -69,7 +70,30 @@ const createInventoryController = async (req, res) => {
         });
       }
       req.body.hospital = user?._id;
+      if (organisationUser.role === "organisation") {
+        organisationUser.bloodAvailability = {
+          ...organisationUser.bloodAvailability,
+          [req.body.bloodGroup]:
+            (parseInt(
+              organisationUser.bloodAvailability[req.body.bloodGroup]
+            ) || 0) - (parseInt(req.body.quantity) || 0),
+        };
+        await organisationUser.save();
+        console.log(organisationUser.bloodAvailability);
+      }
     } else {
+      console.log(organisationUser.bloodAvailability);
+      if (organisationUser.role === "organisation") {
+        organisationUser.bloodAvailability = {
+          ...organisationUser.bloodAvailability,
+          [req.body.bloodGroup]:
+            (parseInt(
+              organisationUser.bloodAvailability[req.body.bloodGroup]
+            ) || 0) + (parseInt(req.body.quantity) || 0),
+        };
+        await organisationUser.save();
+        console.log(organisationUser.bloodAvailability);
+      }
       req.body.donar = user?._id;
     }
 

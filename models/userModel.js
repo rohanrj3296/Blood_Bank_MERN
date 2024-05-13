@@ -62,6 +62,21 @@ const userSchema = new mongoose.Schema(
         }
         return false;
       },
+      default: function () {
+        if (this.role === "organisation") {
+          return {
+            "A+": 0,
+            "A-": 0,
+            "B+": 0,
+            "B-": 0,
+            "AB+": 0,
+            "AB-": 0,
+            "O+": 0,
+            "O-": 0,
+          };
+        }
+        return {};
+      },
     },
   },
   { timestamps: true }

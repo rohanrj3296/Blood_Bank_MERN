@@ -24,12 +24,12 @@ const Modal = () => {
       });
       if (data?.success) {
         alert("New Record Created");
-        window.location.reload();
+        // window.location.reload();
       }
     } catch (error) {
       alert(error.response.data.message);
       console.log(error);
-      window.location.reload();
+      // window.location.reload();
     }
   };
 
